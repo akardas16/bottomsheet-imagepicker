@@ -8,6 +8,10 @@ import android.widget.ImageView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
+
 
 internal class ImageTileAdapter(
     private val isMultiSelect: Boolean,
@@ -127,14 +131,14 @@ sealed class VHImageTileBase(
             view.setOnClickListener { clickListener?.invoke(ivSelect, adapterPosition) }
         }
 
-        fun update(
-            uri: Uri,
-            selected: Boolean,
-            clickListener: (selectView: View, position: Int) -> Unit
-        ) {
+        fun update(uri: Uri, selected: Boolean, clickListener: (selectView: View, position: Int) -> Unit) {
             this.clickListener = clickListener
             ivSelect.isVisible = selected
-            Glide.with(ivImage).load(uri).error(R.drawable.ic_broken_image).into(ivImage)
+            Glide.with(ivImage).load(uri).error(R.drawable.ic_broken_image)
+                .apply(RequestOptions.bitmapTransform(RoundedCorners(14)))
+                .into(ivImage)
+
+
         }
     }
 

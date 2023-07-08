@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 32
 
     compileOptions {
         kotlinOptions.freeCompilerArgs += ['-module-name', "bottomsheet.imagepicker"]
@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         minSdkVersion 17
-        targetSdkVersion 29
+        targetSdkVersion 32
         versionCode 1
         versionName "1.1.2"
     }
@@ -44,6 +44,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0-rc02'
 
     implementation 'com.kroegerama:android-kaiteki:2.9.1'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.kroegerama:recyclerview-kaiteki:1.0.10'
 
     implementation("com.github.bumptech.glide:glide:$glide") {

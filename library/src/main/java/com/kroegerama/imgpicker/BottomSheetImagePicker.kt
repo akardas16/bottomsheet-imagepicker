@@ -93,6 +93,7 @@ class BottomSheetImagePicker internal constructor() :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL, R.style.CustomBottomSheetDialogTheme)
         loadArguments()
         if (requireContext().hasReadStoragePermission) {
             LoaderManager.getInstance(this).initLoader(LOADER_ID, null, this)
@@ -104,11 +105,8 @@ class BottomSheetImagePicker internal constructor() :
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View =
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(R.layout.imagepicker, container, false).also {
             (parentFragment as? OnImagesSelectedListener)?.let { onImagesSelectedListener = it }
         }
